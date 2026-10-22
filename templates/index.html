@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Segmentation intelligente des clients</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .main-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #173b73, #2563eb);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header-section h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .header-section p {
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #26344d;
+        }
+
+        .form-control {
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .form-control:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+        }
+
+        .btn-analyser {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .btn-analyser:hover {
+            background: #173b73;
+            color: white;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+
+                <div class="card main-card shadow-lg">
+
+                    <div class="header-section">
+                        <h1>Segmentation des clients</h1>
+                        <p>Analyse intelligente par Machine Learning</p>
+                    </div>
+
+                    <div class="card-body p-4 p-md-5">
+
+                        <h5 class="mb-4 text-center">
+                            Informations du client
+                        </h5>
+
+                        <form method="POST" action="/prediction">
+
+                            <div class="mb-4">
+                                <label for="age" class="form-label">
+                                    Âge du client
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="age"
+                                    name="age"
+                                    class="form-control"
+                                    placeholder="Ex. : 30"
+                                    min="18"
+                                    max="100"
+                                    step="1"
+                                    required>
+
+                                <div class="form-text">
+                                    Âge exprimé en années.
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="revenu" class="form-label">
+                                    Revenu annuel
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="revenu"
+                                    name="revenu"
+                                    class="form-control"
+                                    placeholder="Ex. : 60"
+                                    min="0"
+                                    max="200"
+                                    step="any"
+                                    required>
+
+                                <div class="form-text">
+                                    Revenu exprimé en milliers de dollars (K$).
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="depense" class="form-label">
+                                    Score de dépense
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="depense"
+                                    name="depense"
+                                    class="form-control"
+                                    placeholder="Ex. : 75"
+                                    min="1"
+                                    max="100"
+                                    step="1"
+                                    required>
+
+                                <div class="form-text">
+                                    Score compris entre 1 et 100, selon
+                                    le jeu de données Mall Customers.
+                                </div>
+                            </div>
+
+                            <div class="info-box mb-4">
+                                <strong>Comment ça fonctionne ?</strong><br>
+                                Le modèle K-Means analyse les trois
+                                caractéristiques saisies et attribue le client
+                                à un groupe présentant des caractéristiques
+                                similaires.
+                            </div>
+
+                            <div class="d-grid">
+                                <button
+                                    type="submit"
+                                    class="btn btn-analyser btn-lg">
+                                    Analyser le profil du client
+                                </button>
+                            </div>
+
+                        </form>
+						<div style="text-align: center; margin-top: 15px;">
+							<a href="/historique"
+							style="display: inline-block; padding: 10px 16px;
+									background: #475569; color: white;
+									text-decoration: none; border-radius: 7px;">
+								Consulter l'historique des analyses
+							</a>
+						</div>
+
+
+                    </div>
+                </div>
+
+                <p class="text-center mt-4 footer-text">
+                    Projet de segmentation des clients<br>
+                    Machine Learning non supervisé — Algorithme K-Means
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

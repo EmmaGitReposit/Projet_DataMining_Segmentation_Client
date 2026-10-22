@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Historique des analyses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 25px;
+            color: #1e293b;
+        }
+
+.conteneur {
+        max-width: 1100px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 14px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+        text-align: center;
+        color: #1d4ed8;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #e2e8f0;
+        padding: 10px;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    th {
+        background: #1d4ed8;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background: #f8fafc;
+    }
+
+    .vide {
+        text-align: center;
+        padding: 25px;
+        color: #64748b;
+    }
+
+    .bouton {
+        display: inline-block;
+        padding: 11px 16px;
+        margin-top: 20px;
+        background: #1d4ed8;
+        color: white;
+        text-decoration: none;
+        border-radius: 7px;
+    }
+
+    .actions {
+        text-align: center;
+    }
+</style>
+Historique des analyses clients
+Les 10 dernières analyses réalisées dans l'application.
+    {% if historique %}
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Âge</th>
+                    <th>Revenu annuel (K$)</th>
+                    <th>Score de dépenses</th>
+                    <th>Cluster</th>
+                    <th>Profil commercial</th>
+                    <th>Recommandation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for analyse in historique %}
+                <tr>
+                    <td>{{ analyse.date }}</td>
+                    <td>{{ analyse.age }}</td>
+                    <td>{{ analyse.revenu }}</td>
+                    <td>{{ analyse.depense }}</td>
+                    <td>{{ analyse.cluster }}</td>
+                    <td>{{ analyse.profile }}</td>
+                    <td>{{ analyse.recommandation }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="vide">Aucune analyse enregistrée pour le moment.</p>
+    {% endif %}
+
+    <div class="actions">
+        <a href="/" class="bouton">Nouvelle analyse</a>
+    </div>
+</div>
+
